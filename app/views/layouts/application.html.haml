@@ -15,7 +15,7 @@
 		.navbar
 			.container
 				.navbar-inner
-					= #render 'layouts/navigation'
+					= render 'layouts/navigation'
 		.container
 			= render 'layouts/messages'
 			= yield
@@ -23,3 +23,4 @@
 		.navbar.mbn
 			.container
 				.navbar-inner
+					= render 'layouts/footer'

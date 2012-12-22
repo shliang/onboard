@@ -1,0 +1,95 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  margin-bottom: 50px;
+}
+
+.myfont {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+
+.center {
+  text-align:center; }
+
+.right {
+  text-align:right; }
+
+.left {
+  text-align:left; }
+
+
+.s20 {
+  font-size:20px; }
+
+.s24 {
+  font-size:24px; }
+
+.s28 {
+  font-size:28px; }
+
+.s30 {
+  font-size:30px; }
+
+.red {
+  color:red; }
+
+.green {
+  color:green; }
+
+.blue {
+  color:blue; }
+
+.white {
+  color:white; }
+
+.italic {
+  font-style:italic; }
+
+.text-align-center {
+  text-align:center; }
+
+.superscript {
+	font-size:xx-small; 
+	vertical-align:top;} 
+
+.subscript {
+	font-size:xx-small; 
+	vertical-align:bottom;} 
+
+.text-top {
+	vertical-align:top;} 
+
+.text-bottom {
+	vertical-align:bottom;} 
+
+
+.invisibile {
+	visibility:hidden;}
+
+.hide {
+	display:none;}
+
+.footer {
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+}
+
+.field_with_errors {
+	padding: 2px;
+	background-color: red;
+	display: table;
+}
+
+.email-field {
+	width: 500;
+}
+
+.done {
+  color:green;
+}
+
+.not-done {
+  color:red;
+}
+
