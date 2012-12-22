@@ -1,6 +1,9 @@
 Onboard::Application.routes.draw do
 
+
   devise_for :users
+  # Feel free to change '/admin' to any namespace you need.
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   # Static pages
   get "home" => "pages#home", as: "home"

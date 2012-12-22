@@ -13,7 +13,7 @@ gem "thin", ">= 1.5.0"
 gem "sendgrid", ">= 1.0.1"
 gem "rolify", ">= 3.2.0"
 # gem 'vanity', :git => 'git://github.com/verticalbrands/vanity.git', :tag => "vb1.9.0"
-
+gem "rails_admin"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -34,6 +34,7 @@ group :development do
 	gem "binding_of_caller", ">= 0.6.8"
 	gem "haml-rails", ">= 0.3.5"
 	gem "hpricot", ">= 0.8.6"
+	gem "letter_opener"
 	gem "quiet_assets", ">= 1.0.1"
 	gem "ruby_parser", ">= 3.1.0"
 end

@@ -353,12 +353,12 @@ Some setup you must do manually if you haven't yet:
 ===============================================================================
 onboard(master*)> rails g devise User
       invoke  active_record
-      create    db/migrate/20121222215759_devise_create_users.rb
+      create    db/migrate/20121222215759_edvise_create_users.rb
       create    app/models/user.rb
       invoke    rspec
       create      spec/models/user_spec.rb
       invoke      factory_girl
-      create        spec/factories/users.rb
+      create        spec/fact`ories/users.rb
       insert    app/models/user.rb
        route  devise_for :users
 onboard(master*)> 
@@ -388,7 +388,37 @@ onboard(master*)> rails generate devise:views
 onboard(master*)> 
 
 ===============================================================================================
+onboard(master*)> rails g rails_admin:install
+           -  Hello, RailsAdmin installer will help you sets things up!
+           -  I need to work with Devise, let's look at a few things first:
+           -  Checking for a current installation of devise...
+           -  Found it!
+           -  Looks like you've already installed it, good!
+           ?  Where do you want to mount rails_admin? Press <enter> for [admin] > 
+        gsub  config/routes.rb
+       route  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+           -  And you already set it up, good! We just need to know about your user model name...
+           -  We found 'user' (should be one of 'user', 'admin', etc.)
+           ?  Correct Devise model name if needed. Press <enter> for [user] > 
+           -  Ok, Devise looks already set up with user model name 'user':
+           -  Now you'll need an initializer...
+      create  config/initializers/rails_admin.rb
+           -  Adding a migration...
+      create  db/migrate/20121222230119_create_rails_admin_histories_table.rb
+           -  Job's done: migrate, start your server and visit '/admin'!
+onboard(master*)> 
 
+
+onboard(master*)> rake db:migrate
+[RailsAdmin] RailsAdmin initialization disabled by default. Pass SKIP_RAILS_ADMIN_INITIALIZER=false if you need it.
+==  CreateRailsAdminHistoriesTable: migrating =================================
+-- create_table(:rails_admin_histories)
+NOTICE:  CREATE TABLE will create implicit sequence "rails_admin_histories_id_seq" for serial column "rails_admin_histories.id"
+NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "rails_admin_histories_pkey" for table "rails_admin_histories"
+   -> 0.0092s
+-- add_index(:rails_admin_histories, [:item, :table, :month, :year], {:name=>"index_rails_admin_histories"})
+   -> 0.0030s
+==  CreateRailsAdminHistoriesTable: migrated (0.0123s) ========================
 
 ===============================================================================================
 
