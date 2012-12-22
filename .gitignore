@@ -33,3 +33,6 @@ db/*.sqlite3
 # Ignore SASS precompiled files
 /public
 /public/assets
+
+#FIGURE THIS OUT
+.bundle/

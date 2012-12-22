@@ -2,6 +2,19 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.9'
 
+gem "bootstrap-sass", ">= 2.1.1.0"
+gem "cancan", ">= 1.6.8"
+gem "devise", ">= 2.1.2"
+gem "devise_invitable", ">= 1.1.4"
+gem "figaro", ">= 0.5.0"
+gem "pg", ">= 0.14.1"
+gem "haml", ">= 3.1.7"
+gem "thin", ">= 1.5.0"
+gem "sendgrid", ">= 1.0.1"
+gem "rolify", ">= 3.2.0"
+# gem 'vanity', :git => 'git://github.com/verticalbrands/vanity.git', :tag => "vb1.9.0"
+
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -16,39 +29,26 @@ end
 
 gem 'jquery-rails'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+group :development do
+	gem "better_errors", ">= 0.2.0"
+	gem "binding_of_caller", ">= 0.6.8"
+	gem "haml-rails", ">= 0.3.5"
+	gem "hpricot", ">= 0.8.6"
+	gem "quiet_assets", ">= 1.0.1"
+	gem "ruby_parser", ">= 3.1.0"
+end
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
+group :test do
+	gem "capybara", ">= 2.0.1"
+	gem "database_cleaner", ">= 0.9.1"
+	gem "email_spec", ">= 1.4.0"
+end
 
-# Use unicorn as the app server
-# gem 'unicorn'
+group :development, :test do
+	gem "factory_girl_rails", ">= 4.1.0"
+	gem "rspec-rails", ">= 2.11.4"
+end
 
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'
-
-gem "better_errors", ">= 0.2.0", :group => :development
-gem "binding_of_caller", ">= 0.6.8", :group => :development
-gem "bootstrap-sass", ">= 2.1.1.0"
-gem "cancan", ">= 1.6.8"
-gem "capybara", ">= 2.0.1", :group => :test
-gem "database_cleaner", ">= 0.9.1", :group => :test
-gem "devise", ">= 2.1.2"
-gem "devise_invitable", ">= 1.1.4"
-gem "email_spec", ">= 1.4.0", :group => :test
-gem "factory_girl_rails", ">= 4.1.0", :group => [:development, :test]
-gem "figaro", ">= 0.5.0"
-gem "pg", ">= 0.14.1"
-gem "haml", ">= 3.1.7"
-gem "haml-rails", ">= 0.3.5", :group => :development
-gem "hpricot", ">= 0.8.6", :group => :development
-gem "quiet_assets", ">= 1.0.1", :group => :development
-gem "ruby_parser", ">= 3.1.0", :group => :development
-gem "rspec-rails", ">= 2.11.4", :group => [:development, :test]
-gem "thin", ">= 1.5.0"
-gem "sendgrid", ">= 1.0.1"
-gem "rolify", ">= 3.2.0"
+group :production do
+	# gem 'rack-google_analytics', require: 'rack/google_analytics'
+end

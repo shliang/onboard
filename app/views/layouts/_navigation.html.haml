@@ -1,0 +1,13 @@
+= link_to t(:brand), root_path, :class => 'brand'
+%ul.nav
+	- if user_signed_in?
+		%li
+			= link_to('Edit account', account_path)
+		-# - if current_user.has_role? :admin
+		-#   %li
+		-#     = link_to('Admin', users_path)
+		%li
+			= link_to('Logout', destroy_user_session_path, method: :delete)
+	- else
+		%li
+			= link_to('Login with Twitter', '/users/auth/twitter')

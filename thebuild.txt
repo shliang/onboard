@@ -314,3 +314,72 @@ Your bundle is complete! Use `bundle show [gemname]` to see where a bundled gem 
     composer  Running 'after bundler' callbacks.
 The template [https://raw.github.com/RailsApps/rails-composer/master/composer.rb] could not be loaded. Error: You have already activated rake 0.9.2.2, but your Gemfile requires rake 10.0.3. Using bundle exec may solve this.
 41m> 
+
+
+===============================================================================================
+onboard(master*)> rails generate devise:install
+      create  config/initializers/devise.rb
+      create  config/locales/devise.en.yml
+    ===============================================================================
+
+Some setup you must do manually if you haven't yet:
+
+  1. Ensure you have defined default url options in your environments files. Here 
+     is an example of default_url_options appropriate for a development environment 
+     in config/environments/development.rb:
+
+       config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+     In production, :host should be set to the actual host of your application.
+
+  2. Ensure you have defined root_url to *something* in your config/routes.rb.
+     For example:
+
+       root :to => "home#index"
+
+  3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+     For example:
+
+       <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+
+  4. If you are deploying Rails 3.1 on Heroku, you may want to set:
+
+       config.assets.initialize_on_precompile = false
+
+     On config/application.rb forcing your application to not access the DB
+     or load models when precompiling your assets.
+
+===============================================================================
+onboard(master*)> rails g devise User
+      invoke  active_record
+      create    db/migrate/20121222215759_devise_create_users.rb
+      create    app/models/user.rb
+      invoke    rspec
+      create      spec/models/user_spec.rb
+      invoke      factory_girl
+      create        spec/factories/users.rb
+      insert    app/models/user.rb
+       route  devise_for :users
+onboard(master*)> 
+===============================================================================================
+
+
+===============================================================================================
+
+
+===============================================================================================
+
+
+===============================================================================================
+
+
+===============================================================================================
+
+
+===============================================================================================
+
+
+===============================================================================================
+
+
