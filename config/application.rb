@@ -70,5 +70,7 @@ module Onboard
     if Rails.env.production?
       config.middleware.use("Rack::GoogleAnalytics", web_property_id: ENV["GOOGLEANALYTICS_ID"])
     end
+
+    config.logger = Logger.new(STDOUT)
   end
 end
