@@ -36,4 +36,7 @@ Onboard::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # Enable vanity playground
+  Vanity.playground.collecting = true
 end

@@ -12,6 +12,7 @@ Onboard::Application.routes.draw do
   get "contact" => "pages#contact", as: "contact"
   get "terms" => "pages#terms", as: "terms"
   get "privacy" => "pages#privacy", as: "privacy"
+  match '/vanity(/:action(/:id(.:format)))', :controller=>:vanity
 
   root to: "pages#welcome"
 end

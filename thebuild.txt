@@ -422,9 +422,81 @@ NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "rails_admin_hist
 
 ===============================================================================================
 
+onboard(master*)> rails g vanity
+      create  db/migrate/20121222232040_vanity_migration.rb
+      create  db/migrate/20121222232040_vanity_migration_add_enabled_to_vanity_experiments.rb
+      create  db/migrate/20121222232040_vanity_migration_add_vanity_metric_counts_table.rb
+onboard(master*)> rake db:migrate
+[RailsAdmin] RailsAdmin initialization disabled by default. Pass SKIP_RAILS_ADMIN_INITIALIZER=false if you need it.
+rake aborted!
+Multiple migrations have the version number 20121222232040
+/Users/jtg/.rvm/gems/ruby-1.9.3-p194@onboard/gems/activerecord-3.2.9/lib/active_record/migration.rb:636:in `block in migrations'
+/Users/jtg/.rvm/gems/ruby-1.9.3-p194@onboard/gems/activerecord-3.2.9/lib/active_record/migration.rb:629:in `map'
+/Users/jtg/.rvm/gems/ruby-1.9.3-p194@onboard/gems/activerecord-3.2.9/lib/active_record/migration.rb:629:in `migrations'
+/Users/jtg/.rvm/gems/ruby-1.9.3-p194@onboard/gems/activerecord-3.2.9/lib/active_record/migration.rb:734:in `migrations'
+/Users/jtg/.rvm/gems/ruby-1.9.3-p194@onboard/gems/activerecord-3.2.9/lib/active_record/migration.rb:685:in `migrate'
+/Users/jtg/.rvm/gems/ruby-1.9.3-p194@onboard/gems/activerecord-3.2.9/lib/active_record/migration.rb:570:in `up'
+/Users/jtg/.rvm/gems/ruby-1.9.3-p194@onboard/gems/activerecord-3.2.9/lib/active_record/migration.rb:551:in `migrate'
+/Users/jtg/.rvm/gems/ruby-1.9.3-p194@onboard/gems/activerecord-3.2.9/lib/active_record/railties/databases.rake:179:in `block (2 levels) in <top (required)>'
+/Users/jtg/.rvm/gems/ruby-1.9.3-p194@onboard/bin/ruby_noexec_wrapper:14:in `eval'
+/Users/jtg/.rvm/gems/ruby-1.9.3-p194@onboard/bin/ruby_noexec_wrapper:14:in `<main>'
+Tasks: TOP => db:migrate
+(See full trace by running task with --trace)
+onboard(master*)> rake db:migrate
+[RailsAdmin] RailsAdmin initialization disabled by default. Pass SKIP_RAILS_ADMIN_INITIALIZER=false if you need it.
+==  VanityMigration: migrating ================================================
+-- create_table(:vanity_metrics)
+NOTICE:  CREATE TABLE will create implicit sequence "vanity_metrics_id_seq" for serial column "vanity_metrics.id"
+NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "vanity_metrics_pkey" for table "vanity_metrics"
+   -> 0.0058s
+-- add_index(:vanity_metrics, [:metric_id])
+   -> 0.0027s
+-- create_table(:vanity_metric_values)
+NOTICE:  CREATE TABLE will create implicit sequence "vanity_metric_values_id_seq" for serial column "vanity_metric_values.id"
+NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "vanity_metric_values_pkey" for table "vanity_metric_values"
+   -> 0.0022s
+-- add_index(:vanity_metric_values, [:vanity_metric_id])
+   -> 0.0014s
+-- create_table(:vanity_experiments)
+NOTICE:  CREATE TABLE will create implicit sequence "vanity_experiments_id_seq" for serial column "vanity_experiments.id"
+NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "vanity_experiments_pkey" for table "vanity_experiments"
+   -> 0.0021s
+-- add_index(:vanity_experiments, [:experiment_id])
+   -> 0.0013s
+-- create_table(:vanity_conversions)
+NOTICE:  CREATE TABLE will create implicit sequence "vanity_conversions_id_seq" for serial column "vanity_conversions.id"
+NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "vanity_conversions_pkey" for table "vanity_conversions"
+   -> 0.0018s
+-- add_index(:vanity_conversions, [:vanity_experiment_id, :alternative], {:name=>"by_experiment_id_and_alternative"})
+   -> 0.0014s
+-- create_table(:vanity_participants)
+NOTICE:  CREATE TABLE will create implicit sequence "vanity_participants_id_seq" for serial column "vanity_participants.id"
+NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "vanity_participants_pkey" for table "vanity_participants"
+   -> 0.0027s
+-- add_column(:vanity_experiments, :enabled, :boolean)
+   -> 0.0010s
+-- create_table(:vanity_metric_counts)
+NOTICE:  CREATE TABLE will create implicit sequence "vanity_metric_counts_id_seq" for serial column "vanity_metric_counts.id"
+NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "vanity_metric_counts_pkey" for table "vanity_metric_counts"
+   -> 0.0024s
+-- add_index(:vanity_metric_counts, [:vanity_experiment_id, :alternative, :metric], {:name=>"by_experiment_id_and_alternative_and_metric"})
+   -> 0.0016s
+-- add_index(:vanity_participants, [:experiment_id])
+   -> 0.0014s
+-- add_index(:vanity_participants, [:experiment_id, :identity], {:name=>"by_experiment_id_and_identity"})
+   -> 0.0019s
+-- add_index(:vanity_participants, [:experiment_id, :shown], {:name=>"by_experiment_id_and_shown"})
+   -> 0.0027s
+-- add_index(:vanity_participants, [:experiment_id, :seen], {:name=>"by_experiment_id_and_seen"})
+   -> 0.0031s
+-- add_index(:vanity_participants, [:experiment_id, :converted], {:name=>"by_experiment_id_and_converted"})
+   -> 0.0036s
+==  VanityMigration: migrated (0.0403s) =======================================
 
+onboard(master*)> 
 ===============================================================================================
 
+export GOOGLEANALYTICS_ID='UA-YOUR-ID' 
 
 ===============================================================================================
 

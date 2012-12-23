@@ -1,6 +1,5 @@
 class PagesController < ApplicationController
 	before_filter :authenticate_user!, only: [:home]
-
 	def home
 	end
 
@@ -19,4 +18,5 @@ class PagesController < ApplicationController
 
 	def privacy
 	end
+
 end

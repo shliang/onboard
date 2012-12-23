@@ -12,7 +12,7 @@ gem "haml", ">= 3.1.7"
 gem "thin", ">= 1.5.0"
 gem "sendgrid", ">= 1.0.1"
 gem "rolify", ">= 3.2.0"
-# gem 'vanity', :git => 'git://github.com/verticalbrands/vanity.git', :tag => "vb1.9.0"
+gem 'vanity', :git => 'git://github.com/verticalbrands/vanity.git', :tag => "vb1.9.0"
 gem "rails_admin"
 
 # Gems used only for assets and not required
@@ -51,5 +51,5 @@ group :development, :test do
 end
 
 group :production do
-	# gem 'rack-google_analytics', require: 'rack/google_analytics'
+	gem 'rack-google_analytics', require: 'rack/google_analytics'
 end
