@@ -56,6 +56,25 @@ class User < ActiveRecord::Base
     end
   end
   
+  
+  ###
+  ##  Set up User from Omniauth
+  ###
+  def self.from_omniauth(omniauth_info)
+    user = current_user ||= User.new
+    
+    user.name = omniauth_info.name if user.name.blank?
+    user.username = omniauth_info.nickname if user.username.blank?
+    user.nickname = omniauth_info.nickname if user.nickname.blank?
+    user.location = omniauth_info.location if user.location.blank?
+    user.image_url = omniauth_info.image if user.image_url.blank?
+    user.description = omniauth_info.description if user.description.blank?
+    user.email = omniauth_info.email if user.email.blank? 
+    
+    user
+  end
+  
+  
   ###
   ##  Post to Twitter
   ###
