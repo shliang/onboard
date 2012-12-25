@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(:version => 20121223202320) do
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
   create_table "services", :force => true do |t|
-    t.integer  "uid"
+    t.string   "uid"
     t.string   "provider"
     t.string   "token"
     t.string   "secret"

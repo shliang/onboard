@@ -1,7 +1,7 @@
 class CreateServices < ActiveRecord::Migration
   def change
     create_table :services do |t|
-      t.integer :uid
+      t.string  :uid
       t.string  :provider
       t.string  :token
       t.string  :secret
