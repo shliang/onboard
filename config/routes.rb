@@ -26,5 +26,9 @@ Onboard::Application.routes.draw do
   # Vanity
   match '/vanity(/:action(/:id(.:format)))', :controller=>:vanity
 
-  root to: "pages#welcome"
+
+  root :to => 'pages#home', :constraints => lambda {|r| r.env["warden"].authenticate? }
+  root :to => 'pages#welcome'
+  # get "/" => 'users#dashboard', :as => "user_root"
+  # root to: "pages#welcome"
 end

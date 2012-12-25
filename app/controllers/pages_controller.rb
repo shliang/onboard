@@ -1,9 +1,11 @@
 class PagesController < ApplicationController
 	before_filter :authenticate_user!, only: [:home]
 	def home
+    @foo = "You are on your home page"
 	end
 
 	def welcome
+    @foo = "Sign in or sign up"
 	end
 
 	def about

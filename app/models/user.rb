@@ -4,9 +4,9 @@ class User < ActiveRecord::Base
   # Include default devise modules. 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, 
-         :token_authenticatable, :lockable, :timeoutable, :omniauthable
+         :lockable, :timeoutable, :omniauthable
          # Others available are:
-         #   :confirmable, 
+         #   :confirmable, :token_authenticatable,
          
   # DEVISE EXPLAINATIONS
          # Database Authenticatable: encrypts and stores a password in the database to validate the authenticity of a user while signing in. The authentication can be done both through POST requests or HTTP Basic Authentication.
@@ -20,10 +20,6 @@ class User < ActiveRecord::Base
          # Timeoutable: expires sessions that have no activity in a specified period of time.
          # Validatable: provides validations of email and password. It's optional and can be customized, so you're able to define your own validations.
          # Lockable: locks an account after a specified number of failed sign-in attempts. Can unlock via email or after a specified time period.
-
-
-
-
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :admin, :username, :nickname
@@ -58,6 +54,26 @@ class User < ActiveRecord::Base
     else
       super
     end
+  end
+  
+  ###
+  ##  Post to Twitter
+  ###
+  def post_to_twitter(message)
+    auth = authentications.find_by_provider :twitter
+    twitter = Twitter::Client.new(oauth_token: auth.token, oauth_token_secret: auth.secret)
+    foo = twitter.update(message)
+    #### TODO:  Handle any return messages
+    logger.info "~~~~~~~~~~~~~~~~~~  User#post_to_twitter... posted to twitter for: "  + nickname + '  message: ' + message
+  end
+  
+  ###
+  ##  Utilities
+  ###
+  def self.list
+    p self.count
+    self.find(:all, :order => "current_sign_in_at").each {|u| p u.nickname.ljust(20) + ' ~ ' + u.current_sign_in_at.to_s}
+    true
   end
   
 end
