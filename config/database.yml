@@ -15,7 +15,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: db/onboard_development
+  database: onboard_development
   pool: 5
   username: jtg
   password: postgres
@@ -42,8 +42,8 @@ development:
 test:
   adapter: postgresql
   encoding: utf8
-  database: db/onboard_test
-  username: postgres
+  database: onboard_test
+  username: jtg
   password: root
   host: localhost
   port: 5432
@@ -52,7 +52,7 @@ production:
   adapter: postgresql
   encoding: utf8
   database: db/onboard_production
-  username: postgres
+  username: jtg
   password: root
   host: localhost
   port: 5432

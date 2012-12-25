@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121222232040) do
+ActiveRecord::Schema.define(:version => 20121223202320) do
 
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
@@ -26,9 +26,20 @@ ActiveRecord::Schema.define(:version => 20121222232040) do
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
+  create_table "services", :force => true do |t|
+    t.integer  "uid"
+    t.string   "provider"
+    t.string   "token"
+    t.string   "secret"
+    t.text     "info"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "",    :null => false
-    t.string   "encrypted_password",     :default => "",    :null => false
+    t.string   "email",                  :default => ""
+    t.string   "encrypted_password",     :default => ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -46,6 +57,12 @@ ActiveRecord::Schema.define(:version => 20121222232040) do
     t.datetime "locked_at"
     t.string   "authentication_token"
     t.boolean  "admin",                  :default => false
+    t.string   "name"
+    t.string   "username"
+    t.string   "nickname"
+    t.string   "location"
+    t.string   "image_url"
+    t.string   "description"
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
   end

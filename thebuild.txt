@@ -499,6 +499,81 @@ onboard(master*)>
 export GOOGLEANALYTICS_ID='UA-YOUR-ID' 
 
 ===============================================================================================
+onboard(master*)> rails g model service provider:string, uid:string, token:string, secret:string, info:string
+Connecting to database specified by database.yml
+No default alternative specified; choosing Please signup. as default.
+      invoke  active_record
+      create    db/migrate/20121223202320_create_services.rb
+      create    app/models/service.rb
+      invoke    rspec
+      create      spec/models/service_spec.rb
+      invoke      factory_girl
+      create        spec/factories/services.rb
+onboard(master*)> rails g controller Service create destroy failure index twitter facebook                        
+Connecting to database specified by database.yml
+No default alternative specified; choosing Please signup. as default.
+      create  app/controllers/service_controller.rb
+       route  get "service/facebook"
+       route  get "service/twitter"
+       route  get "service/index"
+       route  get "service/failure"
+       route  get "service/destroy"
+       route  get "service/create"
+      invoke  haml
+      create    app/views/service
+      create    app/views/service/create.html.haml
+      create    app/views/service/destroy.html.haml
+      create    app/views/service/failure.html.haml
+      create    app/views/service/index.html.haml
+      create    app/views/service/twitter.html.haml
+      create    app/views/service/facebook.html.haml
+      invoke  rspec
+      create    spec/controllers/service_controller_spec.rb
+      create    spec/views/service
+      create    spec/views/service/create.html.haml_spec.rb
+      create    spec/views/service/destroy.html.haml_spec.rb
+      create    spec/views/service/failure.html.haml_spec.rb
+      create    spec/views/service/index.html.haml_spec.rb
+      create    spec/views/service/twitter.html.haml_spec.rb
+      create    spec/views/service/facebook.html.haml_spec.rb
+      invoke  helper
+      create    app/helpers/service_helper.rb
+      invoke    rspec
+      create      spec/helpers/service_helper_spec.rb
+      invoke  assets
+      invoke    coffee
+      create      app/assets/javascripts/service.js.coffee
+      invoke    scss
+      create      app/assets/stylesheets/service.css.scss
+
+===============================================================================================
+
+
+===============================================================================================
+
+
+===============================================================================================
+
+
+===============================================================================================
+
+
+===============================================================================================
+
+
+===============================================================================================
+
+
+===============================================================================================
+
+
+===============================================================================================
+
+
+===============================================================================================
+
+
+===============================================================================================
 
 
 ===============================================================================================
