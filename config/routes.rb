@@ -23,6 +23,10 @@ Onboard::Application.routes.draw do
   get "terms"   => "pages#terms",   as: "terms"
   get "privacy" => "pages#privacy", as: "privacy"
   
+  # User
+  get '/account' => 'users#show', as: 'user_show'
+  resources :users, only: [:update]
+  
   # Vanity
   match '/vanity(/:action(/:id(.:format)))', :controller=>:vanity
 

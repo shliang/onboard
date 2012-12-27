@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(:version => 20121223202320) do
     t.string   "provider"
     t.string   "token"
     t.string   "secret"
+    t.string   "expires_at"
+    t.boolean  "expires"
     t.text     "info"
     t.integer  "user_id"
     t.datetime "created_at", :null => false

@@ -60,17 +60,17 @@ class User < ActiveRecord::Base
   ###
   ##  Set up User from Omniauth
   ###
-  def self.from_omniauth(omniauth_info)
-    user = current_user ||= User.new
-    
+  def self.build_from_omniauth(user, omniauth_info)
+    user ||= User.new
+        
     user.name = omniauth_info.name if user.name.blank?
-    user.username = omniauth_info.nickname if user.username.blank?
-    user.nickname = omniauth_info.nickname if user.nickname.blank?
-    user.location = omniauth_info.location if user.location.blank?
-    user.image_url = omniauth_info.image if user.image_url.blank?
+    user.username    = omniauth_info.nickname    if user.username.blank?
+    user.nickname    = omniauth_info.nickname    if user.nickname.blank?
+    user.location    = omniauth_info.location    if user.location.blank?
+    user.image_url   = omniauth_info.image       if user.image_url.blank?
     user.description = omniauth_info.description if user.description.blank?
-    user.email = omniauth_info.email if user.email.blank? 
-    
+    user.email       = omniauth_info.email       if user.email.blank? 
+    logger.info "~~~~~~~~~~~~~~~~~ user#from_omniauth  user: " + user.to_yaml
     user
   end
   

@@ -1,0 +1,21 @@
+%br/
+
+= image_tag(@user.image_url)
+
+%h3= "Name: #{@user.name} "
+%h3= "Nickname: #{@user.nickname} "
+%h3= "Location: #{@user.location} "
+%h3= "Description: #{@user.description} "
+
+- if @user.email.blank?
+	%h3.field_with_errors Please lend us your email.  No spam ever.  Just to keep you up-to-date.
+	= form_for @user, method: :put do |f|
+		%div
+		%h3 Email
+		.row-fluid	
+			.span9
+				.email-field.field_with_errors= f.email_field :email
+			.span1
+				= f.submit "Save", class: "btn btn-large btn-success"
+- else
+	%h3= "Email: #{@user.email}"

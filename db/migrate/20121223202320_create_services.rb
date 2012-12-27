@@ -5,6 +5,8 @@ class CreateServices < ActiveRecord::Migration
       t.string  :provider
       t.string  :token
       t.string  :secret
+      t.string  :expires_at
+      t.boolean :expires
       t.text    :info
       t.integer :user_id
 
