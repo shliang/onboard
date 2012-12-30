@@ -56,5 +56,6 @@ end
 
 group :production do
 	gem 'rack-google_analytics', require: 'rack/google_analytics'
-  gem "unicorn"  #  UNICORN IS INSTEAD OF THIN 
+  gem "thin", ">= 1.5.0"
+  # gem "unicorn"  #  UNICORN IS INSTEAD OF THIN 
 end

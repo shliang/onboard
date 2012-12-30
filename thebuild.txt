@@ -548,6 +548,9 @@ No default alternative specified; choosing Please signup. as default.
 
 ===============================================================================================
 
+heroku create
+heroku apps:rename getmeonboard
+heroku addons:add redistogo:nano
 
 ===============================================================================================
 
