@@ -1,12 +1,9 @@
 Onboard::Application.routes.draw do
 
 
-  # get "service/create"
-  # get "service/destroy"
-  # get "service/failure"
-  # get "service/index"
-  # get "service/facebook"
-  # get "service/twitter"
+  # resources :fbs
+  # get '/fb' => 'fbs#profile', as: 'fb_profile'
+
 
   match '/auth/:provider/callback' => 'services#authenticate'
 

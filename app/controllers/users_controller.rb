@@ -5,6 +5,14 @@ class UsersController < ApplicationController
     if @user.blank?
       redirect_to root_path, notice: "You must be signed in!"
     end
+    
+    @fb = Fb.new
+    @fb.setup(@user)
+    logger.info "~~~~~~~~~~~~~~~~~ UsersController  fb: " + @fb.to_yaml
+    # logger.info "~~~~~~~~~~~~~~~~~ UsersController  profile: " + @fb.profile.to_yaml
+    # logger.info "~~~~~~~~~~~~~~~~~ fbUsersController  friends: " + @fb.friends.to_yaml
+    # logger.info "~~~~~~~~~~~~~~~~~ fbUsersController  feed: " + @fb.feed.to_yaml
+    
   end
   
   def update

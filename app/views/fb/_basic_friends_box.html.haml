@@ -1,0 +1,17 @@
+///
+//  ASSUMES:  @fb is passed in.
+///
+
+
+
+- g = @fb.graph
+- friends = Array.new @fb.friends
+
+.row-fluid
+	.span12.div.fb.pts.pls
+		- 4.times do 
+			- if f = friends.pop
+				.row-fluid
+					- friend = g.get_object(f['id'])
+					.span12
+						= link_to friend['name'], friend['link']
