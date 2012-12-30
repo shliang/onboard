@@ -12,8 +12,6 @@ gem "haml", ">= 3.1.7"
 gem "koala"
 gem "omniauth-facebook"
 gem "omniauth-twitter"
-gem "thin", ">= 1.5.0"
-# gem "unicorn"  #  UNICORN IS INSTEAD OF THIN 
 gem "sendgrid", ">= 1.0.1"
 gem "rolify", ">= 3.2.0"
 gem "vanity", :git => 'git://github.com/verticalbrands/vanity.git', :tag => "vb1.9.0"
@@ -53,8 +51,10 @@ end
 group :development, :test do
 	gem "factory_girl_rails", ">= 4.1.0"
 	gem "rspec-rails", ">= 2.11.4"
+  gem "thin", ">= 1.5.0"
 end
 
 group :production do
 	gem 'rack-google_analytics', require: 'rack/google_analytics'
+  gem "unicorn"  #  UNICORN IS INSTEAD OF THIN 
 end
