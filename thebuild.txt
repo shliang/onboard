@@ -551,8 +551,16 @@ No default alternative specified; choosing Please signup. as default.
 heroku create
 heroku apps:rename getmeonboard
 heroku addons:add redistogo:nano
+./script/env.sh 
+
+
+heroku apps:destroy
+git remote rm heroku
 
 ===============================================================================================
+
+Procfild
+web: bundle exec unicorn -p $PORT -c ./config/unicorn.rb
 
 
 ===============================================================================================
