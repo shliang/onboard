@@ -1,4 +1,4 @@
-class Fb< ActiveRecord::Base
+class Fb
 
   @graph = nil      # Facebook Graph API
   @profile = nil    # Hash
@@ -18,12 +18,12 @@ class Fb< ActiveRecord::Base
       
     if @graph.nil?
       s = user.services.find_by_provider(:facebook)
-      logger.info "~~~~~~~~~~~~~~~~~ fb#initialize  service: " + s.to_yaml
+      # logger.info "~~~~~~~~~~~~~~~~~ fb#initialize  service: " + s.to_yaml
       if s
         @facebook = true
         @graph = Koala::Facebook::API.new(s.token)
         @profile = ::Hashie::Mash.new @graph.get_object("me")
-        logger.info "~~~~~~~~~~~~~~~~~ fb#initialize  @profile: " + @profile.to_yaml
+        # logger.info "~~~~~~~~~~~~~~~~~ fb#initialize  @profile: " + @profile.to_yaml
         
         @friends = @graph.get_connections("me", "friends")
         # @graph.get_connections("me", "friends").each { |f| @friends << @graph.get_object(f['id']) }
