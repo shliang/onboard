@@ -79,7 +79,7 @@ class User < ActiveRecord::Base
   ##  Post to Twitter
   ###
   def post_to_twitter(message)
-    auth = authentications.find_by_provider :twitter
+    auth = services.find_by_provider :twitter
     twitter = Twitter::Client.new(oauth_token: auth.token, oauth_token_secret: auth.secret)
     foo = twitter.update(message)
     #### TODO:  Handle any return messages
