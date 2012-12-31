@@ -68,7 +68,7 @@ module Onboard
     config.assets.version = '1.0'
 
     if Rails.env.production?
-      config.middleware.use("Rack::GoogleAnalytics", web_property_id: ENV["GOOGLEANALYTICS_ID"])
+      config.middleware.use("Rack::GoogleAnalytics", web_property_id: ENV["GMO_GOOGLEANALYTICS_ID"])
     end
 
     config.logger = Logger.new(STDOUT)
