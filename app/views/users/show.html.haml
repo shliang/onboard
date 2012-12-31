@@ -24,26 +24,19 @@
 %br/
 %br/
 - p = @fb.profile
-- pronoun = p['gender'] == "male" ? "he" : "she"
-- pronoun_possesive = p['gender'] == "male" ? "his" : "hers"
+- pronoun = p.gender == "male" ? "he" : "she"
+- pronoun_possesive = p.gender == "male" ? "his" : "hers"
 .row-fluid
-	.span12.s28= p['name']
+	.span12.s28= p.name
 %br/
 .row-fluid
-	.span12.s20= "#{p['first_name']} is from #{p['hometown']['name']} but currently #{pronoun} is in #{p['location']['name']} "
+	.span12.s20= "#{p.first_name} is from #{p.hometown.name} but currently #{pronoun} is in #{p.location.name} "
 %br/
 .row-fluid
-	.span12.s20= "A favorite quote of {pronoun_possesive} is \" #{p['quotes']} \" "
+	.span12.s20= "A favorite quote of #{pronoun_possesive} is #{p.quotes} "
 
 %br/
 %br/
-
-- fs = Array.new @fb.friends
-- fstring = fs.pop['name']
-- while f =fs.pop 
-	- fstring = fstring + " and " + f['name']
-.row-fluid
-	.span11.s20= "#{p['first_name']}'s friends are #{fstring}"
 
 - @fb.feed
 

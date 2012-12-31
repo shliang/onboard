@@ -12,6 +12,6 @@
 		- 4.times do 
 			- if f = friends.pop
 				.row-fluid
-					- friend = g.get_object(f['id'])
+					- friend = ::Hashie::Mash.new g.get_object(f['id'])
 					.span12
-						= link_to friend['name'], friend['link']
+						= link_to friend.name, friend.link

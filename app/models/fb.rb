@@ -1,10 +1,10 @@
 class Fb< ActiveRecord::Base
 
-  @graph = nil
-  @profile = nil
-  @facebook = nil
-  @friends = nil
-  @feed = nil
+  @graph = nil      # Facebook Graph API
+  @profile = nil    # Hash
+  @facebook = nil   # Boolean (is this a facebook account?)
+  @friends = nil    # Array
+  @feed = nil       # 
   
   @last_user = nil
   
@@ -22,11 +22,12 @@ class Fb< ActiveRecord::Base
       if s
         @facebook = true
         @graph = Koala::Facebook::API.new(s.token)
-        @profile = @graph.get_object("me")
+        @profile = ::Hashie::Mash.new @graph.get_object("me")
         logger.info "~~~~~~~~~~~~~~~~~ fb#initialize  @profile: " + @profile.to_yaml
         
         @friends = @graph.get_connections("me", "friends")
         # @graph.get_connections("me", "friends").each { |f| @friends << @graph.get_object(f['id']) }
+        # logger.info "~~~~~~~~~~~~~~~~~ fb#initialize  friends: " + friends.class.to_s
         # logger.info "~~~~~~~~~~~~~~~~~ fb#initialize  friends: " + friends.to_yaml
   
         # @feed = @graph.get_connections("me", "feed")
