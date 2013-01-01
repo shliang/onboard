@@ -21,7 +21,7 @@
 	%h3= "Email: #{@user.email}"
 
 
-- if @infacebook
+- if !@fb.nil?
 
 	%br/
 	%br/
@@ -32,10 +32,10 @@
 		.span12.s28= p.name
 	%br/
 	.row-fluid
-		.span12.s20= "#{p.first_name} is from #{p.hometown.name} but currently #{pronoun} is in #{p.location.name} "
+		.span12.s20= "#{p.first_name} is from #{p.hometown.name} but currently #{pronoun} is in #{p.location.name} " if p.first_name && p.hometown.name && p.location
 	%br/
 	.row-fluid
-		.span12.s20= "A favorite quote of #{pronoun_possesive} is #{p.quotes} "
+		.span12.s20= "A favorite quote of #{pronoun_possesive} is #{p.quotes} " if p.quotes
 
 	%br/
 	%br/

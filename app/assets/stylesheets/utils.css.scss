@@ -8,16 +8,6 @@ body {
 .myfont {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
 
-.center {
-  text-align:center; }
-
-.right {
-  text-align:right; }
-
-.left {
-  text-align:left; }
-
-
 .s20 {
   font-size:20px; }
 
@@ -48,18 +38,27 @@ body {
 .text-align-center {
   text-align:center; }
 
+.text-top {
+	vertical-align:top;} 
+
+.text-bottom {
+	vertical-align:bottom;} 
+
+.center {
+  text-align:center; }
+
+.right {
+  text-align:right; }
+
+.left {
+  text-align:left; }
+
 .superscript {
 	font-size:xx-small; 
 	vertical-align:top;} 
 
 .subscript {
 	font-size:xx-small; 
-	vertical-align:bottom;} 
-
-.text-top {
-	vertical-align:top;} 
-
-.text-bottom {
 	vertical-align:bottom;} 
 
 

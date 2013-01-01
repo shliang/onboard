@@ -1,0 +1,7 @@
+///### ALL Profiles
+%br/
+
+- @users.each do |u|
+	.row-fluid
+		.span1= image_tag(u.image_url)
+		.span4.myfont.text-bottom.s28= link_to u.name, "/profile/#{u.id}"

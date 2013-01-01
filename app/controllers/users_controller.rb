@@ -1,24 +1,25 @@
 class UsersController < ApplicationController
 
-  def show
+  def profiles
+    @users = User.all
+  end
+
+  def profile
+    @user = User.find(params[:id])
+    
+    @fb = setup_for_facebook(@user)
+    # logger.info "~~~~~~~~~~~~~~~~~ UsersControllerprofile  fb: " + @fb.to_yaml
+  end
+
+  def account
     @user = current_user
     if @user.blank?
       redirect_to root_path, notice: "You must be signed in!"
     end
     
-    @infacebook = false
-    
-    if fb_service = @user.services.find_by_provider(:facebook)
-      @infacebook = true    
-      @fb = Fb.new
-      @fb.setup(@user)
-      logger.info "~~~~~~~~~~~~~~~~~ UsersController  fb: " + @fb.to_yaml
-      # logger.info "~~~~~~~~~~~~~~~~~ UsersController  profile: " + @fb.profile.to_yaml
-      # logger.info "~~~~~~~~~~~~~~~~~ fbUsersController  friends: " + @fb.friends.to_yaml
-      # logger.info "~~~~~~~~~~~~~~~~~ fbUsersController  feed: " + @fb.feed.to_yaml
-    end
+    @fb = setup_for_facebook(@user)
   end
-  
+
   def update
     @user = User.find(params[:id])
     email_present = @user.email.present?
@@ -35,6 +36,21 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+  end
+  
+  private
+  
+  def setup_for_facebook(user)
+    fb = nil
+    if fb_service = user.services.find_by_provider(:facebook)
+      fb = Fb.new
+      fb.setup(@user)
+      logger.info "~~~~~~~~~~~~~~~~~ UsersController  fb: " + fb.to_yaml
+      # logger.info "~~~~~~~~~~~~~~~~~ UsersController  profile: " + @fb.profile.to_yaml
+      # logger.info "~~~~~~~~~~~~~~~~~ fbUsersController  friends: " + @fb.friends.to_yaml
+      # logger.info "~~~~~~~~~~~~~~~~~ fbUsersController  feed: " + @fb.feed.to_yaml
+    end
+    fb
   end
   
 end
