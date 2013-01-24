@@ -63,13 +63,13 @@ class User < ActiveRecord::Base
   def self.build_from_omniauth(user, omniauth_info)
     user ||= User.new
         
-    user.name = omniauth_info.name if user.name.blank?
-    user.username    = omniauth_info.nickname    if user.username.blank?
-    user.nickname    = omniauth_info.nickname    if user.nickname.blank?
-    user.location    = omniauth_info.location    if user.location.blank?
-    user.image_url   = omniauth_info.image       if user.image_url.blank?
-    user.description = omniauth_info.description if user.description.blank?
-    user.email       = omniauth_info.email       if user.email.blank? 
+    user.name        = omniauth_info.name        if !omniauth_info.name.blank?
+    user.username    = omniauth_info.nickname    if !omniauth_info.username.blank?
+    user.nickname    = omniauth_info.nickname    if !omniauth_info.nickname.blank?
+    user.location    = omniauth_info.location    if !omniauth_info.location.blank?
+    user.image_url   = omniauth_info.image       if !omniauth_info.image_url.blank?
+    user.description = omniauth_info.description if !omniauth_info.description.blank?
+    user.email       = omniauth_info.email       if !omniauth_info.email.blank? 
     logger.info "~~~~~~~~~~~~~~~~~ user#from_omniauth  user: " + user.to_yaml
     user
   end
