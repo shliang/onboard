@@ -16,7 +16,12 @@ You will need to set up your environment to contain the following constancts.
 
 	export GMO_TWITTER_CONSUMER_KEY='your-key' 
 	export GMO_TWITTER_CONSUMER_SECRET='your-secret' 
-	
+
+
+== To configure
+	lvh.me            points to localhost
+	'anything'.lvh.me points to localhost
+
 == Copyright
 
 Copyright (c) 2012 Ken Decanio. See LICENSE for details.

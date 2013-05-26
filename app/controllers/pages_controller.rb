@@ -6,6 +6,7 @@ class PagesController < ApplicationController
 
 	def welcome
     @foo = "Sign in or sign up"
+    @foo = " With SXSW Friends"  if request.subdomain == "sxsw"
 	end
 
 	def about

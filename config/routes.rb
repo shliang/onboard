@@ -28,6 +28,7 @@ Onboard::Application.routes.draw do
   # Vanity
   match '/vanity(/:action(/:id(.:format)))', :controller=>:vanity
 
+  match '/' => 'pages#welcome', :constraints => { :subdomain => /.+/ }
 
   # this goes to 'home' if signed in and 'welcome' if not
   root :to => 'pages#home', :constraints => lambda {|r| r.env["warden"].authenticate? }
