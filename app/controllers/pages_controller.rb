@@ -1,25 +1,25 @@
 class PagesController < ApplicationController
-	before_filter :authenticate_user!, only: [:home]
-	def home
+  # before_filter :authenticate_user!, only: [:home]
+  def home
     @foo = "You are on your home page"
-	end
+  end
 
-	def welcome
+  def welcome
     @foo = "Sign in or sign up"
     @foo = " With SXSW Friends"  if request.subdomain == "sxsw"
-	end
+  end
 
-	def about
-	end
+  def about
+  end
 
-	def contact
-	end
+  def contact
+  end
 
-	# Terms of service
-	def terms
-	end
+  # Terms of service
+  def terms
+  end
 
-	def privacy
-	end
+  def privacy
+  end
 
 end
