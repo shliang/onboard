@@ -24,7 +24,7 @@ group :development, :test do
   gem 'letter_opener'
   gem 'jazz_hands'
   gem 'pry-rescue'
-  gem 'rspec-rails', '~> 2.14'
+  gem 'rspec-rails', '~> 3.0.0.beta'
 end
 
 group :test do
