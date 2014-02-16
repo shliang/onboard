@@ -27,5 +27,8 @@ module Onboard
 
     # Devise says for Heroku
     config.assets.initialize_on_precompile = false
+
+    # Quiet Assets -- to turn it off -- false
+    config.quiet_assets = true
   end
 end
