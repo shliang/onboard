@@ -22,3 +22,4 @@
 en:
   hello: "Hello world"
   brand: "Onboard"
+  not_signed_in: "Sorry. Gotta sign in to see that. Please sign in."
