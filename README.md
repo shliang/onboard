@@ -17,3 +17,6 @@ rails generate devise User; rake db:migrate
 rails generate devise user
 
 ## configure devise in user model and migration
+
+
+Copyright (c) 2012-2014 Ken Decanio
