@@ -5,6 +5,10 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def profile
+    @user = User.find( params[:id] )
+  end
+
 protected
   def auth_user
     if !user_signed_in?

@@ -27,6 +27,14 @@ describe UsersController do
         flash[:notice].should eq 'Sorry. Gotta sign in to see that. Please sign in.'
       end
 
+    describe 'users#profile' do
+      it 'redirects signin with flash message' do
+        expect(get :profile, id: @user.id).to redirect_to(new_user_session_path)
+        flash[:notice].should eq 'Sorry. Gotta sign in to see that. Please sign in.'
+      end
+    end
+
+
     end
   end
 
@@ -41,11 +49,18 @@ describe UsersController do
     end
 
     describe 'users#profiles' do
-      it 'sets @user to an array of all users' do
+      it 'sets @users to an array of all users' do
         test_users << @user
 
         get :profiles
         assigns(:users).should =~ test_users
+      end
+    end
+
+    describe 'users#profile' do
+      it 'sets @user user matching id' do
+        get :profile, id: @user.id
+        assigns(:user).should == @user
       end
     end
   end
