@@ -11,33 +11,23 @@ describe UsersController do
     end
 
     describe 'users#profiles' do
-      # let(:I18n) { double("I18n") }
-
       it 'redirects signin with flash message' do
-
-        #### TODO: should decuple test from value in en.yml
-        # puts "~~~~~~~~~~~~~ I18n.t(:not_signed_in)  #{I18n.t(:not_signed_in)}"
-        # # I18n.stub(:not_signed_in) { 'this is my test' }
-        # allow(I18n.t).to receive(:not_signed_in) { 'this is my test' }
-        # I18n.stub(t: :not_signed_in) { "this is my test" }
-
-        # puts ">>>>>>>>>>>>> I18n.t(:not_signed_in)  #{I18n.t(:not_signed_in)}"
+        I18n.should_receive(:translate).with(:not_signed_in).and_return( 'this is my test' )
 
         expect(get :profiles).to redirect_to(new_user_session_path)
-        flash[:notice].should eq 'Sorry. Gotta sign in to see that. Please sign in.'
+        flash[:notice].should eq 'this is my test'
       end
+    end
 
     describe 'users#profile' do
       it 'redirects signin with flash message' do
-        expect(get :profile, id: @user.id).to redirect_to(new_user_session_path)
-        flash[:notice].should eq 'Sorry. Gotta sign in to see that. Please sign in.'
+        I18n.should_receive(:translate).with(:not_signed_in).and_return( 'this is my test' )
+
+        expect(get :profile, id: @user).to redirect_to(new_user_session_path)
+        flash[:notice].should eq 'this is my test'
       end
     end
-
-
-    end
   end
-
 
   describe 'authenticated user' do
     let(:test_users) { [FactoryGirl.create(:user), FactoryGirl.create(:user)] }
@@ -64,5 +54,4 @@ describe UsersController do
       end
     end
   end
-
 end
