@@ -30,5 +30,8 @@ module Onboard
 
     # Quiet Assets -- to turn it off -- false
     config.quiet_assets = true
+
+    # Change to true to raise an error if an invalid locale is passed, otherwise this skips locale validations
+    I18n.enforce_available_locales = false
   end
 end

@@ -13,7 +13,7 @@ gem 'uglifier', '>= 1.3'    # Use Uglifier as compressor for JavaScript assets
 
 ### Authentication
 gem 'devise'
-gem "omniauth-twitter"
+gem "omniauth-facebook"
 
 group :development do
   gem 'better_errors'

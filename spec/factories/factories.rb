@@ -11,4 +11,5 @@ FactoryGirl.define do
   sequence(:last_name) {|n| "Johnson#{n}"}
   sequence(:number) {|n| "#{n}"}
   sequence(:postal_usa) {|n| "#{n.to_s.rjust(5, '0')}"}
+  sequence(:uid) {|n| "#{n.to_s.rjust(10, '0')}"}
 end

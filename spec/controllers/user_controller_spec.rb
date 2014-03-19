@@ -12,7 +12,7 @@ describe UsersController do
 
     describe 'users#profiles' do
       it 'redirects signin with flash message' do
-        I18n.should_receive(:translate).with(:not_signed_in).and_return( 'this is my test' )
+        expect(I18n).to receive(:translate).with(:not_signed_in).and_return( 'this is my test' )
 
         expect(get :profiles).to redirect_to(new_user_session_path)
         flash[:notice].should eq 'this is my test'
@@ -21,7 +21,7 @@ describe UsersController do
 
     describe 'users#profile' do
       it 'redirects signin with flash message' do
-        I18n.should_receive(:translate).with(:not_signed_in).and_return( 'this is my test' )
+        expect(I18n).to receive(:translate).with(:not_signed_in).and_return( 'this is my test' )
 
         expect(get :profile, id: @user).to redirect_to(new_user_session_path)
         flash[:notice].should eq 'this is my test'

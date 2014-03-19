@@ -2,7 +2,7 @@
 onboard
 =======
 
-== From Scratch
+## From Scratch
 
 rails new onboard --skip-test-unit --skip-bundle --database=postgresql
 rails generate rspec:install
@@ -16,7 +16,24 @@ rails generate devise User; rake db:migrate
 
 rails generate devise user
 
-## configure devise in user model and migration
+configure devise in user model and migration
+
+
+## TODO
+
+#confirmation not needed for service authentication
+#Strong Params with Devise??
+
+1. Omniauth
+	* Twitter
+	* Facebook
+	* Github
+* Figaro
+* Add CanCan and/or Rolify
+* Move to Rails 4.1
+  * http://edgeguides.rubyonrails.org/upgrading_ruby_on_rails.html
+  * http://edgeguides.rubyonrails.org/4_1_release_notes.html
+
 
 
 Copyright (c) 2012-2014 Ken Decanio

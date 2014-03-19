@@ -47,4 +47,16 @@ RSpec.configure do |config|
 
   # Support for Devise
   config.include Devise::TestHelpers, type: :controller
+
+  config.extend ControllerMacros, :type => :controller
 end
+
+OmniAuth.config.test_mode = true
+OmniAuth.config.add_mock(:facebook,
+  {
+      uid: "1234567890",
+      info: { name: 'info_name' },
+      credentials: { token: 'cred_token', secret: 'cred_secret'  },
+      extra: { raw_info: {bio: "If people speak of me, do I exist?"} }
+    }
+  )

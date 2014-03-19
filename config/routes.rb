@@ -1,6 +1,6 @@
 Onboard::Application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: {omniauth_callbacks: "services"}
 
   ###
   # Static pages
@@ -9,13 +9,15 @@ Onboard::Application.routes.draw do
   get "welcome" => "pages#welcome", as: "welcome"
 
 
+  ###
+  # other routes
+  ###
   get '/profiles' => 'users#profiles', as: 'user_profiles'
   get '/profile/:id' => 'users#profile', as: 'user_profile'
 
-  # # this goes to 'home' if signed in and 'welcome' if not
-  # root :to => 'pages#home', :constraints => lambda {|r| r.env["warden"].authenticate? }
-  # root :to => 'pages#welcome'
-
+  ###
+  # root path depends on authentication
+  ###
   authenticated :user do
     root to: "pages#home", as: :authenticated_root
   end
