@@ -24,7 +24,6 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'letter_opener'
-  gem 'jazz_hands'
   gem 'pry-rescue'
   gem 'rspec-rails', '~> 3.0.0.beta'
 end
