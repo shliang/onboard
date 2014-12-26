@@ -24,7 +24,7 @@ configure devise in user model and migration
 #confirmation not needed for service authentication
 #Strong Params with Devise??
 
-- remove haml
+- remove hamt
 1. Omniauth
 	* Twitter
 	* Facebook

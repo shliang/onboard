@@ -1,6 +1,8 @@
+require 'pry-rescue'
 class ServicesController <  Devise::OmniauthCallbacksController
 
   def authenticate
+    binding.pry
     omniauth      = request.env["omniauth.auth"]
     provider      = omniauth.provider
     uid           = omniauth.uid
@@ -33,4 +35,7 @@ class ServicesController <  Devise::OmniauthCallbacksController
     authenticate
   end
 
+  def twitter
+    authenticate
+  end
 end

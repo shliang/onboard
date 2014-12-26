@@ -49,11 +49,22 @@ describe ServicesController do
 
   describe 'new user' do
     describe 'new authentication' do
-      it 'creates a new user and new service' do
+      it 'creates a new facebook user and new service' do
         expect( Service.count ).to eql 0
         expect( User.count ).to eql 0
 
         post :facebook
+
+        expect( Service.count ).to eql 1
+        expect( User.count ).to eql 1
+      end
+
+      it 'creates a new twitter user and new service' do
+        request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:twitter]
+        expect( Service.count ).to eql 0
+        expect( User.count ).to eql 0
+
+        post :twitter
 
         expect( Service.count ).to eql 1
         expect( User.count ).to eql 1
