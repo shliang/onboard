@@ -1,5 +1,4 @@
 class ServicesController <  Devise::OmniauthCallbacksController
-
   def authenticate
     omniauth      = request.env["omniauth.auth"]
     provider      = omniauth.provider
@@ -33,4 +32,17 @@ class ServicesController <  Devise::OmniauthCallbacksController
     authenticate
   end
 
+  def twitter
+    authenticate
+  end
+
+  def failure
+    auth_info = response.try(:request).try(:env).try(:[], "omniauth.auth")
+    if auth_info
+      authenticate
+    else
+      flash[:error] = 'Something went wrong while trying to login'
+      redirect_to root_path
+    end
+  end
 end
