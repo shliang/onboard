@@ -1,5 +1,4 @@
 class ServicesController <  Devise::OmniauthCallbacksController
-  # What calls this?
   def authenticate
     omniauth      = request.env["omniauth.auth"]
     provider      = omniauth.provider
