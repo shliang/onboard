@@ -9,6 +9,9 @@ class ServicesController <  Devise::OmniauthCallbacksController
 
     service = Service.find_by_provider_and_uid(provider, uid)
 
+    # TODO: What if you sign up with an email, then sign up with a twitter, then log in with email
+    # and associate your twitter? (current_user != service.user), and it should assign service.user to current_user
+    # and merge the users.
     if !service.nil?
       user = service.user.nil? ? (current_user ? current_user : User.new) : service.user
     else
