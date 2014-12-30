@@ -1,4 +1,5 @@
 class ServicesController <  Devise::OmniauthCallbacksController
+  # What calls this?
   def authenticate
     omniauth      = request.env["omniauth.auth"]
     provider      = omniauth.provider
@@ -8,14 +9,16 @@ class ServicesController <  Devise::OmniauthCallbacksController
 
     service = Service.find_by_provider_and_uid(provider, uid)
 
-    #### TODO: Existing User problem  (if service.user != current_user)
-    user = !service.nil? ? service.user : ( current_user ? current_user : User.new )
+    if !service.nil?
+      user = service.user.nil? ? (current_user ? current_user : User.new) : service.user
+    else
+      user = current_user || User.new
+    end
     service = service.nil? ? user.services.new : service
     service.user = user
 
     user.build_or_update_from_omniauth_info(omniauth_info)
     service.build_or_update_from_omniauth(provider, uid, credentials, omniauth)
-
 
     if user.save
       flash[:notice] = "Signed in successfully."
@@ -25,7 +28,6 @@ class ServicesController <  Devise::OmniauthCallbacksController
       flash[:warning] = "There was a problem with signing in.  We are investigating."
       redirect_to root_url
     end
-
   end
 
   def facebook

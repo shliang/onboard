@@ -18,6 +18,7 @@ gem 'figaro'
 
 group :development do
   gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'quiet_assets'
 end
 
@@ -26,7 +27,8 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.0'
   gem 'letter_opener'
   gem 'pry-rescue'
-  gem 'rspec-rails', '~> 3.0.0.beta'
+  gem 'rspec-rails', '3.1.0'
+  gem 'capybara'
 end
 
 group :test do

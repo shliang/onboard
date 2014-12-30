@@ -30,4 +30,8 @@ class User < ActiveRecord::Base
   def no_social_auth?
     services.empty?
   end
+
+  def has_provider?(provider)
+    services.map(&:provider).include? provider.to_s
+  end
 end

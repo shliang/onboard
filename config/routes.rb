@@ -1,6 +1,7 @@
 Onboard::Application.routes.draw do
 
   devise_for :users, controllers: {omniauth_callbacks: "services"}
+  delete '/services/destroy', to: 'users#destroy_service', as: :destroy_user_omniauth
 
   ###
   # Static pages

@@ -8,7 +8,7 @@ class Service < ActiveRecord::Base
     when 'facebook'
       update_attributes(provider: provider, uid: uid, token: credentials.token, expires_at: credentials.expires_at,  expires: credentials.expires, info: omniauth.extra.raw_info)
     when 'twitter'
-      update_attributes(provider: provider, uid: uid, token: credentials.token, expires_at: credentials.expires_at,  expires: credentials.expires, info: omniauth.extra.raw_info)
+      update_attributes(provider: provider, uid: uid, token: credentials.token, expires_at: credentials.expires_at,  expires: credentials.expires)
     else
       ## this should not happen
       logger.info "~~~~~~~~~~~~~~~~~ Service#build_or_update_from_omniauth  FAILURE: who is this provider? '" + provider +"'"
