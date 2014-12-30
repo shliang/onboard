@@ -7,7 +7,6 @@ describe ServicesController, type: :controller do
   # And Facebook account is associated with a different user
   # Then WHAT HAPPENS???
 
-
   before(:each) do
     request.env["devise.mapping"] = Devise.mappings[:user]
     request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:facebook]

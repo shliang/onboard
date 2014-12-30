@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  ROLES = [:admin]
   devise  :confirmable, :database_authenticatable, :lockable, :omniauthable,
           :registerable, :rememberable, :trackable, :validatable,
           :omniauth_providers => [:facebook, :twitter]
@@ -33,5 +34,9 @@ class User < ActiveRecord::Base
 
   def has_provider?(provider)
     services.map(&:provider).include? provider.to_s
+  end
+
+  def admin?
+    self.role == 'admin'
   end
 end
