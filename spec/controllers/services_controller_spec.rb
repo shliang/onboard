@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ServicesController do
+describe ServicesController, type: :controller do
   #### TODO: Existing User problem
   # Given user is signed in
   # When user authenticates with Facebook
