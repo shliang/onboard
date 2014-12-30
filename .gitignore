@@ -39,3 +39,7 @@ db/*.sqlite3
 
 # Figaro secrets
 config/application.yml
+
+*.swp
+
+coverage/
