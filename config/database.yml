@@ -3,7 +3,8 @@ development:
   encoding: unicode
   database: onboard_development
   pool: 5
-  username: jtg
+  host: localhost
+  username: sfwg
   password: postgres
 
 test:
@@ -11,7 +12,8 @@ test:
   encoding: unicode
   database: onboard_test
   pool: 5
-  username: jtg
+  host: localhost
+  username: sfwg
   password: postgres
 
 production:

@@ -1,0 +1,5 @@
+<ul>
+<% @users.each do |user| %>
+  <li><%= user.email %> | <%= user.services.map(&:provider) %></li>
+<% end %>
+</ul>

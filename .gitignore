@@ -36,3 +36,10 @@ db/*.sqlite3
 
 #FIGURE THIS OUT
 .bundle/
+
+# Figaro secrets
+config/application.yml
+
+*.swp
+
+coverage/
